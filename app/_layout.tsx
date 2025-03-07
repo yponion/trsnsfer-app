@@ -19,9 +19,14 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  const { screenMode } = useScreenMode();
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
+
+  useEffect(() => {
+    console.log(screenMode);
+  }, [screenMode]);
 
   useEffect(() => {
     if (loaded) {
@@ -33,12 +38,11 @@ export default function RootLayout() {
     return null;
   }
 
-  const { screenMode } = useScreenMode();
-
-  let backgroundColor = colorScheme === "dark" ? "#101010" : "#f9f9f9";
-  if (screenMode !== colorScheme) {
-    if (screenMode === "light") backgroundColor = "#f9f9f9";
-    if (screenMode === "dark") backgroundColor = "#101010";
+  let backgroundColor = null;
+  if (screenMode === "light") backgroundColor = "#f9f9f9";
+  else if (screenMode === "dark") backgroundColor = "#101010";
+  else {
+    backgroundColor = colorScheme === "dark" ? "#101010" : "#f9f9f9";
   }
 
   return (
