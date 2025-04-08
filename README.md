@@ -10,6 +10,16 @@
 
 웹으로 개발한 [Transfer](https://github.com/yponion/transfer) 서비스를 WebView를 활용해 React Native 앱으로 구현
 
+## Troubleshooting
+
+- `노치에 화면이 가려짐`
+
+  실제 스마트폰에서 실행했을 때 노치와 하단바에 가려져 안전영역을 설정해 주었다.
+
+- `안전영역 등 웹뷰 밖의 앱의 컬러가 바뀌지 않는 문제`
+
+  기존 앱 컬러 설정을 웹으로 구현되어있어 웹뷰 내의 색상만 바뀌는 문제를 `onMessage` 로 웹뷰와 React Native 를 통신하여 색상을 통실시켜 주었다.
+
 ## 🔨 Technology Stack(s)
 
 | Stack                                                                                                 | Version  | etc. |
